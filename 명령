@@ -1,0 +1,4 @@
+docker compose up -d
+docker cp ./db_백업/backup0430.sql nsk_postgres:/
+docker exec -it nsk_postgres bash
+psql -U handalab -d nsk < backup0430.sql

@@ -5,13 +5,14 @@ services:
       dockerfile: ./nsk_postgres/Dockerfile
     restart: on-failure
     container_name: nsk_postgres
-    network_mode: "host"
+    ports:
+      - "5434:5432"
     environment:
       - TZ=Asia/Seoul
       - POSTGRES_DB=nsk
       - POSTGRES_USER=handalab
       - POSTGRES_PASSWORD=handalab
-    volumes:
-      - ./nsk_postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./nsk_postgres/data:/var/lib/postgresql/data
+    # volumes:
+      # - ./nsk_postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      # - ./nsk_postgres/data:/var/lib/postgresql/data
 
